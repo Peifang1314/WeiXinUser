@@ -61,11 +61,11 @@ public class UserController {
     public void OAuthServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        System.out.println("servlet开始");
+
         // 用户同意授权后，能获取到code
         String code = request.getParameter("code");
         String state = request.getParameter("state");
-        System.out.println("servlet2");
+
 
         // 用户同意授权
         if (!"authdeny".equals(code)) {
@@ -82,12 +82,11 @@ public class UserController {
 
             //将用户存储到数据库
 
-         userService.userSave(userInfo);
+            userService.userSave(userInfo);
 
             // 设置要传递的参数
             request.setAttribute("snsUserInfo", userInfo);
             request.setAttribute("state", state);
-
 
 
             // 跳转到index.jsp
